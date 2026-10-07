@@ -14,4 +14,4 @@ for y in range(12):
   draw.rectangle((x*128,y*128,(x+1)*128-1,(y+1)*128-1),fill=colors[(x+y)%len(colors)])
 image.save(path, quality=96)
 print('Synthetic fixture',path.name,'1152x1536')
-
+image.resize((120,80)).save(root / 'tests/input.jpg', quality=96)

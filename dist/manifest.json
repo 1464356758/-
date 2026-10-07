@@ -1,0 +1,10 @@
+{
+  "version": "2.1",
+  "version_code": 8,
+  "certificate_sha256": "08c71daeaf00941e14148b5252db897d99d4fe9c14a8fee16172016fceefca6d",
+  "apk": {
+    "path": "dist/CameraProfileStudio-2.1.apk",
+    "size_bytes": 25228491,
+    "sha256": "4f670b5c98227855f131d122a960f4f3b5ed187c86bdf7e669947cca9423b576"
+  }
+}

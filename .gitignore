@@ -11,4 +11,6 @@ __pycache__/
 *.jks
 *.keystore
 *.idsig
-
+tests/input.jpg
+tests/output.jpg
+tests/profile-*.jpg

@@ -1,0 +1,16 @@
+{
+  "encoding": "gzip",
+  "parts": [
+    {
+      "path": "dist/bootstrap/CameraProfileStudio-2.1.apk.gz.part01",
+      "sha256": "850e3240fbbebce3bf3d8ed918fd3f1208a3bc3289b2ddcbd7d4ca17ef75b7da",
+      "size": 6291456
+    },
+    {
+      "path": "dist/bootstrap/CameraProfileStudio-2.1.apk.gz.part02",
+      "sha256": "a4e6cae425c1ad090181a68b23d1d185bc3e817e0d01d6289b471ce1b372a3e3",
+      "size": 5709836
+    }
+  ],
+  "apk_sha256": "4f670b5c98227855f131d122a960f4f3b5ed187c86bdf7e669947cca9423b576"
+}

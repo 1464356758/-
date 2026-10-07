@@ -1,0 +1,96 @@
+name: Android build and native validation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'app/**'
+      - 'tests/**'
+      - 'scripts/**'
+      - 'dist/**'
+      - 'dependency-source.json'
+      - '.github/workflows/android.yml'
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: android-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  restore-delivery:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - name: Reassemble and verify signed delivery
+        run: python3 scripts/restore_delivery.py
+      - name: Save installable APK to main
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          git add dist/CameraProfileStudio-2.1.apk
+          if ! git diff --cached --quiet; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -m 'Save verified signed 2.1 APK [skip ci]'
+            git push origin HEAD:main
+          fi
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: CameraProfileStudio-2.1-installable
+          path: dist/CameraProfileStudio-2.1.apk
+          compression-level: 0
+          retention-days: 30
+  validate:
+    needs: restore-delivery
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      matrix:
+        api: [34, 35]
+    env:
+      ANDROID_API: ${{ matrix.api }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - run: python3 scripts/restore_delivery.py
+      - uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6 # v6
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Prepare Android SDK and KVM
+        timeout-minutes: 10
+        run: |
+          echo "ANDROID_SDK_ROOT=$ANDROID_HOME" >> "$GITHUB_ENV"
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" 'platforms;android-35' 'build-tools;35.0.0' 'platform-tools' 'emulator' "system-images;android-$ANDROID_API;google_apis;x86_64"
+          test -c /dev/kvm
+          sudo chmod 666 /dev/kvm
+      - name: Prepare pinned dependencies and synthetic fixtures
+        run: |
+          python3 -m pip install Pillow
+          python3 scripts/prepare_dependencies.py
+          python3 scripts/generate_fixture.py
+      - name: Pure Java and independent image readback regression
+        run: |
+          mkdir -p qa
+          bash tests/run.sh | tee qa/pure-regression.log
+      - name: Compile and prepare native test package
+        run: |
+          bash app/build.sh
+          bash tests/android/build.sh
+          python3 scripts/prepare_native_target.py
+      - name: Core, photo picker and screen-off native AI checks
+        run: python3 -u scripts/run_native.py
+      - name: Persist results even on failure
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: android-validation-api${{ matrix.api }}-${{ github.run_id }}
+          path: qa/
+          retention-days: 30
+          if-no-files-found: error

@@ -26,6 +26,9 @@ public final class SmokeRunner extends Instrumentation {
   void ok(boolean value, String name) {
     if (!value) throw new AssertionError(name);
     log.append("PASS ").append(name).append('\n');
+    Bundle update = new Bundle();
+    update.putString("checkpoint", name);
+    sendStatus(0, update);
   }
 
   File fixture(String id) throws Exception {
