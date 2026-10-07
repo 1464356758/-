@@ -47,9 +47,8 @@ public final class PixelInputRunner extends NativeChecks {
 
   private byte[] webpCredential(byte[] source) throws Exception {
     ByteArrayOutputStream out = new ByteArrayOutputStream();
-    out.write(source, 0, 12);
+    out.write(source); // Ancillary chunks follow the image in a simple WebP container.
     out.write(new byte[] {'C','2','P','A',4,0,0,0,'t','e','s','t'});
-    out.write(source, 12, source.length - 12);
     byte[] result = out.toByteArray(); int length = result.length - 8;
     for (int i = 0; i < 4; i++) result[4+i] = (byte)(length >>> (8*i));
     return result;
