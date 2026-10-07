@@ -11,7 +11,7 @@ subprocess.run([str(bt/'zipalign'),'-c','-P','16','4',str(built)],check=True)
 def payload(path):
  with zipfile.ZipFile(path) as z:
   if z.testzip() is not None: raise ValueError('APK CRC failure')
-  return {n:hashlib.sha256(z.read(n)).hexdigest() for n in z.namelist() if not n.startswith('META-INF/')}
+  return {n:hashlib.sha256(z.read(n)).hexdigest() for n in z.namelist() if not n.startswith('META-INF/') and not n.endswith('/')}
 unsigned = root/'app/build/aligned.apk'
 if payload(unsigned)!=payload(built): raise ValueError('CI signing changed application content')
 target=qa/'native-target.apk'; shutil.copyfile(built,target)

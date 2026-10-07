@@ -14,6 +14,7 @@ import org.json.*;
 /** Real Android decoder/export regression for arbitrary metadata and original dimensions. */
 public final class PixelInputRunner extends NativeChecks {
   private ProfileRepository profiles;
+  private final JSONArray outputRecords = new JSONArray();
 
   private byte[] image(Bitmap.CompressFormat format) throws Exception {
     Bitmap b = Bitmap.createBitmap(65, 49, Bitmap.Config.ARGB_8888);
@@ -80,6 +81,16 @@ public final class PixelInputRunner extends NativeChecks {
     ok(output != null && output.getWidth() == done.report.getInt("width")
         && output.getHeight() == done.report.getInt("height"), name+" output independently decodes");
     output.recycle();
+    File saved = new File(context.getExternalFilesDir(null), "pixel22-"+done.id+".jpg");
+    try (InputStream in = new FileInputStream(store.result(done.id)); OutputStream out = new FileOutputStream(saved)) {
+      Io.copy(in,out,1000000,()->false);
+    }
+    outputRecords.put(new JSONObject().put("file",saved.getName()).put("input",name)
+        .put("width",done.report.getInt("width")).put("height",done.report.getInt("height"))
+        .put("sha256",done.sha).put("original_size",done.report.getBoolean("original_size")));
+    try (Writer out = new FileWriter(new File(context.getExternalFilesDir(null),"pixel22-outputs.json"))) {
+      out.write(outputRecords.toString(2));
+    }
     return done;
   }
 
