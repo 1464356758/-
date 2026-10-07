@@ -1,0 +1,415 @@
+[
+  {
+    "id": "iphone18promax",
+    "manufacturer": "Apple",
+    "model": "iPhone 18 Pro Max",
+    "category": "手机",
+    "version": 4,
+    "lenses": [
+      {
+        "name": "1× 主摄 · f/1.48",
+        "aperture": 1.48,
+        "equivalent": 24
+      },
+      {
+        "name": "1× 主摄 · f/1.8",
+        "aperture": 1.8,
+        "equivalent": 24
+      },
+      {
+        "name": "1× 主摄 · f/2.8",
+        "aperture": 2.8,
+        "equivalent": 24
+      },
+      {
+        "name": "1× 主摄 · f/4.0",
+        "aperture": 4.0,
+        "equivalent": 24
+      },
+      {
+        "name": "0.5× 超广角 · 13mm 等效",
+        "aperture": 2.2,
+        "equivalent": 13
+      },
+      {
+        "name": "4× 长焦 · 100mm 等效",
+        "aperture": 2.8,
+        "equivalent": 100
+      }
+    ],
+    "source": "https://www.apple.com/iphone-18-pro/specs/",
+    "encoding_profile": {
+      "format": "JPEG",
+      "quality": 98,
+      "color_space": "sRGB",
+      "origin": "app_reencoded"
+    },
+    "verification": "official_specs; three_downloaded_samples_contain_Adobe_Camera_Raw",
+    "output_modes": [
+      {
+        "label": "24MP · 5712×4284",
+        "width": 5712,
+        "height": 4284,
+        "basis": "sample_dimensions; mode_dependent",
+        "lens_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "label": "48MP · 8064×6048",
+        "width": 8064,
+        "height": 6048,
+        "basis": "48MP_4:3_output_preset; exact_sample_unverified",
+        "lens_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "label": "12MP · 4032×3024",
+        "width": 4032,
+        "height": 3024,
+        "basis": "12MP_4:3_output_preset; mode_dependent"
+      }
+    ]
+  },
+  {
+    "id": "mate90promax",
+    "manufacturer": "HUAWEI",
+    "model": "HUAWEI Mate 90 Pro Max",
+    "display": "华为 Mate 90 Pro Max（规格档案）",
+    "category": "手机",
+    "lenses": [
+      {
+        "name": "1× 主摄 · f/1.4",
+        "aperture": 1.4,
+        "equivalent": 24
+      },
+      {
+        "name": "1× 主摄 · f/4",
+        "aperture": 4,
+        "equivalent": 24
+      },
+      {
+        "name": "超广角 · 13mm 等效",
+        "aperture": 2.2,
+        "equivalent": 13
+      },
+      {
+        "name": "长焦 · 89mm 等效",
+        "aperture": 2.6,
+        "equivalent": 89
+      }
+    ],
+    "source": "https://consumer.huawei.com/cn/phones/mate90-pro-max/specs/",
+    "verification": "official_specs_only; original_sample_not_verified",
+    "version": 4,
+    "encoding_profile": {
+      "format": "JPEG",
+      "quality": 98,
+      "color_space": "sRGB",
+      "origin": "app_reencoded"
+    },
+    "output_modes": [
+      {
+        "label": "12.6MP · 4096×3072（兼容输出）",
+        "width": 4096,
+        "height": 3072,
+        "basis": "compatible_output; native_mode_unverified"
+      },
+      {
+        "label": "50MP · 8192×6144（主摄输出预设）",
+        "width": 8192,
+        "height": 6144,
+        "basis": "50MP_4:3_output_preset; exact_sample_unverified",
+        "lens_indices": [
+          0,
+          1
+        ]
+      },
+      {
+        "label": "200MP · 16384×12288（超出本版 52MP 上限）",
+        "width": 16384,
+        "height": 12288,
+        "basis": "official_maximum",
+        "lens_indices": [
+          3
+        ]
+      }
+    ]
+  },
+  {
+    "id": "xiaomi18promax",
+    "manufacturer": "Xiaomi",
+    "model": "Xiaomi 18 Pro Max",
+    "display": "小米 18 Pro Max（规格档案）",
+    "category": "手机",
+    "lenses": [
+      {
+        "name": "主摄 · f/1.67",
+        "aperture": 1.67
+      },
+      {
+        "name": "长焦 · 75mm 等效",
+        "aperture": 2.4,
+        "equivalent": 75
+      }
+    ],
+    "source": "https://www.mi.com/prod/xiaomi-18-pro-max/specs\nhttps://www.antutu.com/doc/137845",
+    "verification": "first_hand_review_specs; original_sample_not_verified",
+    "version": 4,
+    "encoding_profile": {
+      "format": "JPEG",
+      "quality": 98,
+      "color_space": "sRGB",
+      "origin": "app_reencoded"
+    },
+    "output_modes": [
+      {
+        "label": "12.6MP · 4096×3072（兼容输出）",
+        "width": 4096,
+        "height": 3072,
+        "basis": "compatible_output; native_mode_unverified"
+      },
+      {
+        "label": "50MP · 8192×6144（兼容输出）",
+        "width": 8192,
+        "height": 6144,
+        "basis": "compatible_output; native_mode_unverified"
+      }
+    ]
+  },
+  {
+    "id": "iphone17",
+    "manufacturer": "Apple",
+    "model": "iPhone 17",
+    "display": "iPhone 17",
+    "category": "手机",
+    "lenses": [
+      {
+        "name": "1× 主摄",
+        "aperture": 1.6,
+        "equivalent": 26
+      },
+      {
+        "name": "0.5× 超广角",
+        "aperture": 2.2,
+        "equivalent": 13
+      },
+      {
+        "name": "2× 主摄裁切",
+        "aperture": 1.6,
+        "equivalent": 52
+      }
+    ],
+    "source": "https://www.apple.com/iphone-17/specs/",
+    "verification": "official_specs; one_sample_has_iOS_Software; unmodified_status_not_proven",
+    "version": 4,
+    "encoding_profile": {
+      "format": "JPEG",
+      "quality": 98,
+      "color_space": "sRGB",
+      "origin": "app_reencoded"
+    },
+    "output_modes": [
+      {
+        "label": "24MP · 5712×4284",
+        "width": 5712,
+        "height": 4284,
+        "basis": "sample_dimensions; mode_dependent",
+        "lens_indices": [
+          0,
+          1
+        ]
+      },
+      {
+        "label": "48MP · 8064×6048",
+        "width": 8064,
+        "height": 6048,
+        "basis": "48MP_4:3_output_preset; exact_sample_unverified",
+        "lens_indices": [
+          0,
+          1
+        ]
+      },
+      {
+        "label": "12MP · 4032×3024",
+        "width": 4032,
+        "height": 3024,
+        "basis": "12MP_4:3_output_preset; mode_dependent"
+      }
+    ]
+  },
+  {
+    "id": "leicaq343",
+    "manufacturer": "LEICA CAMERA AG",
+    "model": "LEICA Q3 43",
+    "display": "Leica 徕卡 Q3 43",
+    "category": "相机",
+    "version": 4,
+    "lenses": [
+      {
+        "name": "APO-Summicron 43mm · f/2",
+        "aperture": 2,
+        "equivalent": 43,
+        "focal_length": 43,
+        "lens_model": "APO-Summicron 43 f/2 ASPH."
+      },
+      {
+        "name": "APO-Summicron 43mm · f/2.8",
+        "aperture": 2.8,
+        "equivalent": 43,
+        "focal_length": 43,
+        "lens_model": "APO-Summicron 43 f/2 ASPH."
+      },
+      {
+        "name": "APO-Summicron 43mm · f/4",
+        "aperture": 4,
+        "equivalent": 43,
+        "focal_length": 43,
+        "lens_model": "APO-Summicron 43 f/2 ASPH."
+      },
+      {
+        "name": "APO-Summicron 43mm · f/5.6",
+        "aperture": 5.6,
+        "equivalent": 43,
+        "focal_length": 43,
+        "lens_model": "APO-Summicron 43 f/2 ASPH."
+      },
+      {
+        "name": "APO-Summicron 43mm · f/8",
+        "aperture": 8,
+        "equivalent": 43,
+        "focal_length": 43,
+        "lens_model": "APO-Summicron 43 f/2 ASPH."
+      }
+    ],
+    "source": "https://leica-camera.com/en-AU/technical-specifications-leica-q3-43-black",
+    "verification": "official_specs; downloaded_samples_contain_Lightroom_Software",
+    "encoding_profile": {
+      "format": "JPEG",
+      "quality": 98,
+      "color_space": "sRGB",
+      "origin": "app_reencoded"
+    },
+    "output_modes": [
+      {
+        "label": "18.5MP · 5280×3512（JPEG）",
+        "width": 5280,
+        "height": 3512,
+        "basis": "official_jpeg_spec"
+      },
+      {
+        "label": "36.4MP · 7392×4928（JPEG）",
+        "width": 7392,
+        "height": 4928,
+        "basis": "official_jpeg_spec"
+      },
+      {
+        "label": "60.3MP · 9520×6336（超出本版 52MP 上限）",
+        "width": 9520,
+        "height": 6336,
+        "basis": "official_jpeg_spec"
+      }
+    ],
+    "exposure_limits": {
+      "iso_min": 50,
+      "iso_max": 50000,
+      "shutter_min": 6.25e-05,
+      "shutter_max": 120,
+      "bias_max": 3,
+      "basis": "official_specs; safe_subset"
+    }
+  },
+  {
+    "id": "gfx100ii",
+    "manufacturer": "FUJIFILM",
+    "model": "GFX100 II",
+    "display": "Fujifilm 富士 GFX100 II",
+    "category": "中画幅相机",
+    "version": 4,
+    "lenses": [
+      {
+        "name": "GF55mm F1.7 R WR · f/1.7",
+        "aperture": 1.7,
+        "equivalent": 44,
+        "focal_length": 55,
+        "lens_model": "GF55mmF1.7 R WR"
+      },
+      {
+        "name": "GF55mm F1.7 R WR · f/2.8",
+        "aperture": 2.8,
+        "equivalent": 44,
+        "focal_length": 55,
+        "lens_model": "GF55mmF1.7 R WR"
+      },
+      {
+        "name": "GF55mm F1.7 R WR · f/4",
+        "aperture": 4,
+        "equivalent": 44,
+        "focal_length": 55,
+        "lens_model": "GF55mmF1.7 R WR"
+      },
+      {
+        "name": "GF55mm F1.7 R WR · f/5.6",
+        "aperture": 5.6,
+        "equivalent": 44,
+        "focal_length": 55,
+        "lens_model": "GF55mmF1.7 R WR"
+      },
+      {
+        "name": "GF55mm F1.7 R WR · f/8",
+        "aperture": 8,
+        "equivalent": 44,
+        "focal_length": 55,
+        "lens_model": "GF55mmF1.7 R WR"
+      }
+    ],
+    "source": "https://www.fujifilm-x.com/en-us/products/lenses/gf55mmf17-r-wr/specifications/\nhttps://www.photographyblog.com/reviews/fujifilm_gfx_100_ii_review\nhttps://www.fujifilm-x.com/en-us/products/cameras/gfx100-ii/specifications/",
+    "body_source": "https://www.fujifilm-x.com/en-us/products/cameras/gfx100-ii/",
+    "verification": "downloaded_3_samples_with_camera_firmware; provenance_not_cryptographically_verified",
+    "encoding_profile": {
+      "format": "JPEG",
+      "quality": 98,
+      "color_space": "sRGB",
+      "origin": "app_reencoded"
+    },
+    "output_modes": [
+      {
+        "label": "12MP · 4000×3000（官方 S 尺寸）",
+        "width": 4000,
+        "height": 3000,
+        "basis": "official_S_4:3"
+      },
+      {
+        "label": "51MP · 8256×6192（官方 M 尺寸）",
+        "width": 8256,
+        "height": 6192,
+        "basis": "official_M_4:3"
+      },
+      {
+        "label": "102MP · 11648×8736（超出本版 52MP 上限）",
+        "width": 11648,
+        "height": 8736,
+        "basis": "official_L_4:3"
+      }
+    ],
+    "exposure_limits": {
+      "iso_min": 80,
+      "iso_max": 12800,
+      "shutter_min": 3.125e-05,
+      "shutter_max": 3600,
+      "bias_max": 5,
+      "basis": "official_specs; standard_ISO; electronic_shutter"
+    }
+  }
+]

@@ -1,0 +1,12 @@
+[
+  {
+    "id": "litert",
+    "url": "https://dl.google.com/dl/android/maven2/com/google/ai/edge/litert/litert/1.4.2/litert-1.4.2.aar",
+    "sha256": "9b02cdf9db0a698b341b59e75c54ab8221d6304577cc43830d01024caf1fca74"
+  },
+  {
+    "id": "litert-api",
+    "url": "https://dl.google.com/dl/android/maven2/com/google/ai/edge/litert/litert-api/1.4.2/litert-api-1.4.2.aar",
+    "sha256": "66c2ba8086bd5cbf89bec2bd81c3de6c1a852312829cd55bc30c9dd26ffa357c"
+  }
+]

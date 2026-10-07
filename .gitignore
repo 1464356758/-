@@ -1,0 +1,14 @@
+app/build/
+app/vendor/
+app/assets/ESRGAN.tflite
+app/*.apk
+tests/build/
+tests/android/build/
+tests/android/RuntimeTests.apk
+qa/
+__pycache__/
+*.pyc
+*.jks
+*.keystore
+*.idsig
+

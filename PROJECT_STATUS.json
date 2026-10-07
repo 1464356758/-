@@ -1,0 +1,29 @@
+{
+  "project": "Camera Profile Studio",
+  "repository": "https://github.com/1464356758/-",
+  "app_version": "2.1",
+  "version_code": 8,
+  "phase": "NATIVE_BACKGROUND_VALIDATION",
+  "updated_at": "2026-10-07T09:51:58+08:00",
+  "delivered_apk": "dist/CameraProfileStudio-2.1.apk",
+  "delivered_apk_sha256": "4f670b5c98227855f131d122a960f4f3b5ed187c86bdf7e669947cca9423b576",
+  "completed": [
+    "Native album and folder import choices implemented",
+    "Foreground CPU processing, independent notification heartbeat and bounded renewed wake lock implemented",
+    "Cancellation, journaled system interruption and duplicate-safe recovery implemented",
+    "Original protection and write-readback verification implemented",
+    "Eight pure regression groups and 25 independent profile readbacks passed",
+    "APK signature, ZIP CRC, 16 KiB alignment and matching 2.0 certificate passed"
+  ],
+  "pending": [
+    "Full native picker suite on current package",
+    "Real AI completion with screen off, notification cancellation and recovery suite",
+    "Fresh core native regression on current package"
+  ],
+  "next_action": "Run GitHub Android workflow, inspect actual result codes, fix real failures, update evidence",
+  "limits": [
+    "No user phone or ARM real-device test yet",
+    "OEM battery policies and Android foreground-service time limits still apply",
+    "No zero-bug or real-camera-original authenticity claim"
+  ]
+}

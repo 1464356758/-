@@ -1,0 +1,39 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.cameraprofile.studio" android:versionCode="8" android:versionName="2.1">
+    <uses-sdk android:minSdkVersion="29" android:targetSdkVersion="35"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PROCESSING"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <queries>
+        <intent><action android:name="android.provider.action.PICK_IMAGES"/><data android:mimeType="image/*"/></intent>
+        <intent><action android:name="android.intent.action.PICK"/><data android:mimeType="image/*"/></intent>
+        <intent><action android:name="android.intent.action.GET_CONTENT"/><data android:mimeType="image/*"/></intent>
+    </queries>
+    <application android:label="Camera Profile" android:icon="@drawable/app_icon"
+        android:theme="@style/AppTheme" android:allowBackup="false"
+        android:largeHeap="true" android:supportsRtl="true" android:enableOnBackInvokedCallback="false">
+        <activity android:name=".MainActivity" android:configChanges="orientation|screenSize"
+            android:launchMode="singleTop" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND_MULTIPLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/*"/>
+            </intent-filter>
+        </activity>
+        <service android:name=".ProcessingService" android:foregroundServiceType="dataSync|mediaProcessing"
+            android:exported="false" android:stopWithTask="false"/>
+        <provider android:name=".ResultProvider" android:authorities="com.cameraprofile.studio.results"
+            android:exported="false" android:grantUriPermissions="true"/>
+    </application>
+</manifest>

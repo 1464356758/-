@@ -1,0 +1,14 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.cameraprofile.studio.tests">
+ <uses-sdk android:minSdkVersion="29" android:targetSdkVersion="35"/>
+ <application android:label="Runtime Tests">
+  <activity android:name=".GrantActivity" android:exported="true"/>
+  <provider android:name=".FixtureProvider" android:authorities="com.cameraprofile.studio.tests.documents" android:exported="true" android:grantUriPermissions="true" android:permission="android.permission.MANAGE_DOCUMENTS">
+   <intent-filter><action android:name="android.content.action.DOCUMENTS_PROVIDER"/></intent-filter>
+  </provider>
+ </application>
+ <instrumentation android:name=".SmokeRunner" android:targetPackage="com.cameraprofile.studio"/>
+ <instrumentation android:name=".FullSizeRunner" android:targetPackage="com.cameraprofile.studio"/>
+ <instrumentation android:name=".FinalUiRunner" android:targetPackage="com.cameraprofile.studio"/>
+ <instrumentation android:name=".PickerRunner" android:targetPackage="com.cameraprofile.studio"/>
+ <instrumentation android:name=".BackgroundRunner" android:targetPackage="com.cameraprofile.studio"/>
+</manifest>
