@@ -77,6 +77,7 @@ jobs:
           python3 scripts/generate_fixture.py
       - name: Pure Java and independent image readback regression
         run: |
+          set -o pipefail
           mkdir -p qa
           bash tests/run.sh | tee qa/pure-regression.log
       - name: Compile and prepare native test package
