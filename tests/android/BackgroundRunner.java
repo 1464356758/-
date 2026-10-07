@@ -23,7 +23,7 @@ public final class BackgroundRunner extends NativeChecks {
     PowerManager pm=(PowerManager)context.getSystemService(Context.POWER_SERVICE);
     await(()->!pm.isInteractive(),30000,"screen off");ok(true,"screen is off during native AI inference");
     final boolean[] visible={true};await(()->{runOnMainSync(()->{try{visible[0]=(Boolean)field(activity,"visible");}catch(Exception e){throw new RuntimeException(e);}});return !visible[0];},60000,"activity lifecycle stop");ok(true,"activity has stopped and UI polling is disabled");
-    ok(shell("dumpsys power").contains("CameraProfile:processing"),"CPU wake lock held while screen is off");
+    ok(processingWakeLockHeld(),"CPU wake lock held while screen is off");
     String offStage=last().stage;String before=notificationText();SystemClock.sleep(5000);String after=notificationText();ok(!before.equals(after)&&after.contains("已用"),"notification heartbeat changes independently of model callbacks");
     await(()->{TaskStore.Job j=last();if(TaskStore.FAILED.equals(j.state))throw new AssertionError(j.error);return !offStage.equals(j.stage);},360000,"inference advances in background");ok(!pm.isInteractive(),"real inference advances while screen remains off");
     await(()->!ProcessingService.active&&!TaskStore.RUNNING.equals(last().state)&&!TaskStore.QUEUED.equals(last().state),1200000,"background job completion");TaskStore.Job job=last();
@@ -32,7 +32,7 @@ public final class BackgroundRunner extends NativeChecks {
     ok(original.equals(Io.hash(context.getContentResolver().openInputStream(FixtureProvider.uri("source/background.jpg")))),"background reconstruction leaves original unchanged");
     ok(job.sha.equals(Io.hash(context.getContentResolver().openInputStream(Uri.parse(job.gallery)))),"gallery JPEG has identical verified SHA-256");
     ok(notification(41)==null&&notification(42)!=null,"progress notification replaced with completion notification");
-    ok(!shell("dumpsys power").contains("CameraProfile:processing"),"CPU wake lock released after completion");
+    await(()->!processingWakeLockHeld(),10000,"CPU wake lock release");ok(true,"CPU wake lock released after completion");
     try(InputStream in=new FileInputStream(store.result(job.id));OutputStream out=new FileOutputStream(new File(context.getExternalFilesDir(null),"background-ai-12mp.jpg"))){Io.copy(in,out,200000000,()->false);}
     shell("input keyevent 224");shell("input keyevent 82");context.startActivity(new Intent(context,MainActivity.class).putExtra("page","queue").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));SystemClock.sleep(700);snapshot("queue-completed-21.png");
     // User cancellation is exercised through the actual notification action.
@@ -51,6 +51,13 @@ public final class BackgroundRunner extends NativeChecks {
     context.startForegroundService(new Intent(context,ProcessingService.class));await(()->!ProcessingService.active&&TaskStore.SUCCESS.equals(store.find(running.id).state),90000,"recovered metadata job");ok(true,"recovered job processes to a verified new copy");
   }
   private StatusBarNotification notification(int id){NotificationManager nm=(NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);for(StatusBarNotification n:nm.getActiveNotifications())if(n.getId()==id)return n;return null;}
+  private boolean processingWakeLockHeld()throws Exception{
+    String power=shell("dumpsys power");int start=power.indexOf("Wake Locks: size=");
+    if(start<0)throw new AssertionError("Current wake-lock section missing from dumpsys power");
+    int end=power.indexOf("\n\n",start);if(end<0)throw new AssertionError("Current wake-lock section boundary missing");
+    // PowerManager also prints historical ACQ/REL events; they do not mean a held lock.
+    return power.substring(start,end).contains("'CameraProfile:processing'");
+  }
   private String notificationText(){StatusBarNotification n=notification(41);return n==null?"":String.valueOf(n.getNotification().extras.getCharSequence(Notification.EXTRA_TEXT));}
   protected void cleanup()throws Exception{shell("dumpsys battery reset");shell("input keyevent 224");shell("input keyevent 82");}
 }

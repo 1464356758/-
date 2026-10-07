@@ -3,7 +3,7 @@
   "repository": "https://github.com/1464356758/-",
   "app_version": "2.1",
   "version_code": 8,
-  "phase": "CI_VALIDATION_READY",
+  "phase": "CI_BACKGROUND_FINAL_RETEST",
   "updated_at": "2026-10-07T10:59:51.260253+08:00",
   "delivered_apk": "dist/CameraProfileStudio-2.1.apk",
   "delivered_apk_sha256": "4f670b5c98227855f131d122a960f4f3b5ed187c86bdf7e669947cca9423b576",
@@ -14,14 +14,15 @@
     "Original protection and write-readback verification implemented",
     "Eight pure regression groups and 25 independent profile readbacks passed",
     "APK signature, ZIP CRC, 16 KiB alignment and matching 2.0 certificate passed",
-    "Installable 2.1 APK, pinned build workflow and timeout-bounded native runner added to repository"
+    "Installable 2.1 APK, pinned build workflow and timeout-bounded native runner added to repository",
+    "Fresh Android 14 and 15 core native checks: 31/31 on each platform",
+    "Fresh Android 14 and 15 album/folder native checks: 9/9 on each platform",
+    "Both platforms completed 100 native ESRGAN tiles with screen off and verified exact 4000x3000 gallery output"
   ],
   "pending": [
-    "Full native picker suite on current package",
-    "Real AI completion with screen off, notification cancellation and recovery suite",
-    "Fresh core native regression on current package"
+    "Corrected current wake-lock assertion plus notification cancellation and journal recovery suite on both Android platforms"
   ],
-  "next_action": "Inspect first Android 14/15 hardware-accelerated Actions run; fix failures before claiming pass",
+  "next_action": "Run corrected BackgroundRunner; check every assertion and preserve the complete results",
   "limits": [
     "No user phone or ARM real-device test yet",
     "OEM battery policies and Android foreground-service time limits still apply",
@@ -30,5 +31,12 @@
   "diagnosed_blockers": [
     "Local environment has no KVM; repeated software-emulator startups are unsuitable for the pending integration checks",
     "Prior repository commit contained no APK dist directory and no Actions workflow; README download and workflow links were premature"
-  ]
+  ],
+  "ci_run": {
+    "id": 37567244947,
+    "url": "https://github.com/1464356758/-/actions/runs/37567244947",
+    "source_commit": "4dfee00518c3c4cb4eac7d8286e3670f8cf91024",
+    "status": "completed_with_harness_failure"
+  },
+  "test_harness_fix": "Search current Wake Locks section only. First-run dumpsys had historical REL CameraProfile:processing, with no current held lock; matching all text gave a false failure."
 }

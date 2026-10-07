@@ -1,0 +1,55 @@
+INSTRUMENTATION_STATUS: phase=native harness started
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: phase=requesting fixture URI grants
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: phase=fixture URI grants ready
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: phase=launching main activity
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: phase=main activity started
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: phase=PASS actual PROCESS button starts 100 native ESRGAN inference tiles
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: phase=PASS foreground processing notification exists
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: phase=PASS screen is off during native AI inference
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: phase=PASS activity has stopped and UI polling is disabled
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: phase=PASS CPU wake lock held while screen is off
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: phase=PASS notification heartbeat changes independently of model callbacks
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: phase=PASS real inference advances while screen remains off
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: phase=PASS background native AI queue completes successfully
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: phase=PASS native AI output readback is exact 4000 by 3000
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: phase=PASS background reconstruction leaves original unchanged
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: phase=PASS gallery JPEG has identical verified SHA-256
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: phase=PASS progress notification replaced with completion notification
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_RESULT: failure=java.lang.AssertionError: CPU wake lock released after completion
+INSTRUMENTATION_RESULT: report=PASS actual PROCESS button starts 100 native ESRGAN inference tiles
+PASS foreground processing notification exists
+PASS screen is off during native AI inference
+PASS activity has stopped and UI polling is disabled
+PASS CPU wake lock held while screen is off
+PASS notification heartbeat changes independently of model callbacks
+PASS real inference advances while screen remains off
+PASS background native AI queue completes successfully
+PASS native AI output readback is exact 4000 by 3000
+PASS background reconstruction leaves original unchanged
+PASS gallery JPEG has identical verified SHA-256
+PASS progress notification replaced with completion notification
+
+INSTRUMENTATION_RESULT: trace=java.lang.AssertionError: CPU wake lock released after completion
+	at com.cameraprofile.studio.tests.NativeChecks.ok(NativeChecks.java:36)
+	at com.cameraprofile.studio.tests.BackgroundRunner.checks(BackgroundRunner.java:35)
+	at com.cameraprofile.studio.tests.NativeChecks.onStart(NativeChecks.java:27)
+	at android.app.Instrumentation$InstrumentationThread.run(Instrumentation.java:2402)
+
+INSTRUMENTATION_CODE: 0

@@ -1,0 +1,19 @@
+Wake Locks: size=12
+  PARTIAL_WAKE_LOCK              '*telephony-radio*' ACQ=-1s157ms (uid=1001 pid=1139 ws=WorkSource{1001 com.android.phone})
+  PARTIAL_WAKE_LOCK              '*job*/com.google.android.dialer/com.android.voicemail.impl.scheduling.TaskSchedulerJobService#200' ACQ=-1m13s523ms LONG (uid=1000 pid=552 ws=WorkSource{10130 com.google.android.dialer})
+  PARTIAL_WAKE_LOCK              '*job*/com.google.android.apps.messaging/androidx.work.impl.background.systemjob.SystemJobService#1008' ACQ=-41s255ms (uid=1000 pid=552 ws=WorkSource{10128 com.google.android.apps.messaging})
+  PARTIAL_WAKE_LOCK              '*job*/com.google.android.settings.intelligence/.modules.appsearchindexing.impl.AppSearchIndexUpdateJobService#15' ACQ=-1s96ms (uid=1000 pid=552 ws=WorkSource{10118 com.google.android.settings.intelligence})
+  PARTIAL_WAKE_LOCK              '*job*/com.google.android.googlequicksearchbox/com.google.android.apps.gsa.tasks.BackgroundTasksJobService#-43' ACQ=-1s81ms (uid=1000 pid=552 ws=WorkSource{10132 com.google.android.googlequicksearchbox})
+  PARTIAL_WAKE_LOCK              'AudioMix' ACQ=-311ms (uid=1041 ws=WorkSource{1000, 10169})
+  PARTIAL_WAKE_LOCK              'AudioMix' ACQ=-723ms (uid=1041)
+  PARTIAL_WAKE_LOCK              '*job*/com.google.android.googlequicksearchbox/com.google.android.apps.gsa.tasks.BackgroundTasksJobService#-292' ACQ=-56ms (uid=1000 pid=552 ws=WorkSource{10132 com.google.android.googlequicksearchbox})
+  PARTIAL_WAKE_LOCK              '*job*/com.google.android.googlequicksearchbox/com.google.android.apps.gsa.tasks.BackgroundTasksJobService#-290' ACQ=-54ms (uid=1000 pid=552 ws=WorkSource{10132 com.google.android.googlequicksearchbox})
+  PARTIAL_WAKE_LOCK              '*job*/com.google.android.googlequicksearchbox/com.google.android.apps.gsa.tasks.BackgroundTasksJobService#-288' ACQ=-53ms (uid=1000 pid=552 ws=WorkSource{10132 com.google.android.googlequicksearchbox})
+  PARTIAL_WAKE_LOCK              '*job*/com.google.android.googlequicksearchbox/com.google.android.apps.gsa.tasks.BackgroundTasksJobService#-294' ACQ=-50ms (uid=1000 pid=552 ws=WorkSource{10132 com.google.android.googlequicksearchbox})
+  PARTIAL_WAKE_LOCK              '*job*/com.google.android.googlequicksearchbox/com.google.android.apps.gsa.tasks.BackgroundTasksJobService#-406' ACQ=-18ms (uid=1000 pid=552 ws=WorkSource{10132 com.google.android.googlequicksearchbox})
+
+Release history for this App:
+  10-07 03:35:45.255 - 10192 - ACQ CameraProfile:processing (partial)
+  10-07 03:35:45.425 - 10192 - REL CameraProfile:processing
+  10-07 03:35:54.090 - 10192 - ACQ CameraProfile:processing (partial)
+  10-07 03:36:47.730 - 10192 - REL CameraProfile:processing

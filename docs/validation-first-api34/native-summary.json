@@ -1,0 +1,33 @@
+{
+  "environment": {
+    "android_api": 34,
+    "architecture": "x86_64",
+    "acceleration": "KVM",
+    "boot_seconds": 30.27
+  },
+  "tests": [
+    {
+      "runner": "SmokeRunner",
+      "passed": true,
+      "seconds": 16.15,
+      "adb_exit_code": 0,
+      "log": "SmokeRunner.log"
+    },
+    {
+      "runner": "PickerRunner",
+      "passed": true,
+      "seconds": 6.36,
+      "adb_exit_code": 0,
+      "log": "PickerRunner.log"
+    },
+    {
+      "runner": "BackgroundRunner",
+      "passed": false,
+      "seconds": 55.65,
+      "adb_exit_code": 0,
+      "log": "BackgroundRunner.log"
+    }
+  ],
+  "error": "Native checks failed: BackgroundRunner",
+  "all_passed": false
+}

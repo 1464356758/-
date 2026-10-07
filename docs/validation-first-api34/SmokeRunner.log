@@ -1,0 +1,95 @@
+INSTRUMENTATION_STATUS: checkpoint=JPEG metadata, ExifInterface, MediaStore publish and readback
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: checkpoint=fast mode preserves compressed image and ICC
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: checkpoint=input original is unchanged
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: checkpoint=date and timezone separated
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: checkpoint=illegal original orientation safely normalized
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: checkpoint=native orientation transform 1
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: checkpoint=native orientation transform 2
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: checkpoint=native orientation transform 3
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: checkpoint=native orientation transform 4
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: checkpoint=native orientation transform 5
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: checkpoint=native orientation transform 6
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: checkpoint=native orientation transform 7
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: checkpoint=native orientation transform 8
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: checkpoint=PNG transparency composites to white
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: checkpoint=WebP decodes and exports JPEG
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: checkpoint=camera exposure and independent TIFF readback
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: checkpoint=unverified phone exposure rejected
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: checkpoint=invalid calendar date rejected
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: checkpoint=bundled ESRGAN native LiteRT inference and tiled rendering
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: checkpoint=AI weights SHA-256 verified
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: checkpoint=direct JPEG document export byte identity
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: checkpoint=ZIP document export entries, CRC and SHA-256 readback
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: checkpoint=existing document is never overwritten
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: checkpoint=document write failure is reported
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: checkpoint=credential-bearing JPEG is protected
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: checkpoint=processing cancellation does not publish a partial image
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: checkpoint=journal resumes the original interrupted job
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: checkpoint=recovery reuses verified gallery copy without duplicate
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: checkpoint=read-only share provider returns exact verified bytes
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: checkpoint=share provider denies writes
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: checkpoint=Activity import, PROCESS, foreground service and notification lifecycle
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: report=PASS JPEG metadata, ExifInterface, MediaStore publish and readback
+PASS fast mode preserves compressed image and ICC
+PASS input original is unchanged
+PASS date and timezone separated
+PASS illegal original orientation safely normalized
+PASS native orientation transform 1
+PASS native orientation transform 2
+PASS native orientation transform 3
+PASS native orientation transform 4
+PASS native orientation transform 5
+PASS native orientation transform 6
+PASS native orientation transform 7
+PASS native orientation transform 8
+PASS PNG transparency composites to white
+PASS WebP decodes and exports JPEG
+PASS camera exposure and independent TIFF readback
+PASS unverified phone exposure rejected
+PASS invalid calendar date rejected
+PASS bundled ESRGAN native LiteRT inference and tiled rendering
+PASS AI weights SHA-256 verified
+PASS direct JPEG document export byte identity
+PASS ZIP document export entries, CRC and SHA-256 readback
+PASS existing document is never overwritten
+PASS document write failure is reported
+PASS credential-bearing JPEG is protected
+PASS processing cancellation does not publish a partial image
+PASS journal resumes the original interrupted job
+PASS recovery reuses verified gallery copy without duplicate
+PASS read-only share provider returns exact verified bytes
+PASS share provider denies writes
+PASS Activity import, PROCESS, foreground service and notification lifecycle
+
+INSTRUMENTATION_CODE: -1
