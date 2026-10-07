@@ -1,10 +1,10 @@
 {
   "project": "Camera Profile Studio",
   "repository": "https://github.com/1464356758/-",
-  "app_version": "2.1",
-  "version_code": 8,
-  "phase": "READY_TO_INSTALL",
-  "updated_at": "2026-10-07T12:13:05+08:00",
+  "app_version": "2.2",
+  "version_code": 9,
+  "phase": "BUILD_AND_NATIVE_VALIDATION",
+  "updated_at": "2026-10-07T23:27:06.663154+08:00",
   "delivered_apk": "dist/CameraProfileStudio-2.1.apk",
   "delivered_apk_sha256": "4f670b5c98227855f131d122a960f4f3b5ed187c86bdf7e669947cca9423b576",
   "completed": [
@@ -23,8 +23,12 @@
     "GitHub installable APK downloaded back with exact original SHA-256",
     "Independent desktop decoding verified both platform background outputs at 4000x3000 with matching SHA-256"
   ],
-  "pending": [],
-  "next_action": "Install signed CameraProfileStudio-2.1.apk over 2.0; confirm album choice and background operation on user phone",
+  "pending": [
+    "Build from updated 2.2 production source",
+    "Native regression: credential inputs and original-size option on Android 14/15",
+    "Sign with original release key; publish verified upgrade APK"
+  ],
+  "next_action": "Build and test updated 2.2 source; do not treat the previous 2.1 delivery as the new version",
   "limits": [
     "No user phone or ARM real-device test yet",
     "OEM battery policies and Android foreground-service time limits still apply",
@@ -43,5 +47,22 @@
     "conclusion": "success"
   },
   "test_harness_fix": "Search current Wake Locks section only. First-run dumpsys had historical REL CameraProfile:processing, with no current held lock; matching all text gave a false failure.",
-  "evidence_path": "docs/validation/results.json"
+  "evidence_path": "docs/validation/results.json",
+  "previous_delivery": {
+    "delivered_apk": "dist/CameraProfileStudio-2.1.apk",
+    "delivered_apk_sha256": "4f670b5c98227855f131d122a960f4f3b5ed187c86bdf7e669947cca9423b576",
+    "ci_run": {
+      "id": 37569990571,
+      "url": "https://github.com/1464356758/-/actions/runs/37569990571",
+      "source_commit": "3ab7450dfd0b07abf275947e5e2bdcc047e97d55",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  },
+  "current_changes": [
+    "Removed credential-feature rejection before pixel decoding and during JPEG rebuilding",
+    "Original-size selection persisted independently of simulated device preset",
+    "Non-JPEG fast mode automatically reconstructs at original dimensions",
+    "GIF first frame supported through Android decoder"
+  ]
 }

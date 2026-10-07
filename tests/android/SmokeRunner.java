@@ -287,19 +287,10 @@ public final class SmokeRunner extends Instrumentation {
         out.write(new byte[] {(byte) 255, (byte) 235, 0, 6, 'c', '2', 'p', 'a'});
         out.write(raw, 2, raw.length - 2);
       }
-      stage("protected.jpg");
-      store.enqueue(
-          Collections.singletonList(FixtureProvider.uri("source/protected.jpg")),
-          Collections.singletonList("protected.jpg"),
-          fast);
-      TaskStore.Job protectedJob = store.next();
-      try {
-        new PhotoEngine(context, full, store).process(protectedJob, () -> false, (s, p) -> {});
-        throw new AssertionError();
-      } catch (IOException expected) {
-        store.fail(protectedJob.id, TaskStore.FAILED, expected.getMessage());
-        ok(expected.getMessage().contains("真实性"), "credential-bearing JPEG is protected");
-      }
+      TaskStore.Job credentialJob = run("protected.jpg", fast, full);
+      ok(TaskStore.SUCCESS.equals(credentialJob.state)
+          && !JpegEngine.credentials(Io.read(new FileInputStream(store.result(credentialJob.id)), 1000000)),
+          "credential-bearing JPEG is accepted and old credential omitted");
       store.enqueue(
           Collections.singletonList(FixtureProvider.uri("source/input.jpg")),
           Collections.singletonList("input.jpg"),

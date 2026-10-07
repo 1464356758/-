@@ -11,4 +11,5 @@
  <instrumentation android:name=".FinalUiRunner" android:targetPackage="com.cameraprofile.studio"/>
  <instrumentation android:name=".PickerRunner" android:targetPackage="com.cameraprofile.studio"/>
  <instrumentation android:name=".BackgroundRunner" android:targetPackage="com.cameraprofile.studio"/>
+ <instrumentation android:name=".PixelInputRunner" android:targetPackage="com.cameraprofile.studio"/>
 </manifest>

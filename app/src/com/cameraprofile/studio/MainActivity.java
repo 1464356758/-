@@ -273,7 +273,7 @@ public final class MainActivity extends Activity {
     header.addView(brand);
     title = heading("  CAMERA PROFILE", 12);
     header.addView(title, new LinearLayout.LayoutParams(0, -2, 1));
-    TextView info = label("2.1  ·  关于", 12, muted);
+    TextView info = label("2.2  ·  关于", 12, muted);
     info.setPadding(dp(10), dp(8), 0, dp(8));
     info.setOnClickListener(v -> about());
     header.addView(info);
@@ -422,7 +422,7 @@ public final class MainActivity extends Activity {
     row(
         body,
         "处理模式",
-        "metadata".equals(settings.mode) ? "极速 · 仅重建元数据" : "像素重建 · 按目标尺寸",
+        "metadata".equals(settings.mode) ? "极速 · 保持原尺寸" : "像素重建 · 可选原图尺寸",
         () -> modePicker());
     if (!"metadata".equals(settings.mode)) {
       row(body, "输出尺寸", profiles.resolution(settings).optString("label"), () -> resolutionPicker());
@@ -547,20 +547,23 @@ public final class MainActivity extends Activity {
     JSONArray choices = profiles.get(settings.profileId).optJSONArray("output_modes");
     ArrayList<Integer> indices = new ArrayList<>();
     ArrayList<String> labels = new ArrayList<>();
+    indices.add(-1);
+    labels.add("保持原图尺寸");
     int selected = 0;
     for (int i = 0; i < choices.length(); i++)
       if (profiles.supports(settings, i)) {
-        if (i == settings.resolution) selected = indices.size();
+        if (!settings.originalSize && i == settings.resolution) selected = indices.size();
         indices.add(i);
         labels.add(choices.optJSONObject(i).optString("label"));
       }
     new AlertDialog.Builder(this)
-        .setTitle("目标尺寸 · 横竖自动匹配")
+        .setTitle("输出尺寸")
         .setSingleChoiceItems(
             labels.toArray(new String[0]),
             selected,
             (dialog, which) -> {
-              settings.resolution = indices.get(which);
+              settings.originalSize = indices.get(which) == -1;
+              if (!settings.originalSize) settings.resolution = indices.get(which);
               persistEditor();
               dialog.dismiss();
               render();
@@ -570,7 +573,7 @@ public final class MainActivity extends Activity {
   }
 
   private void modePicker() {
-    String[] labels = {"极速：只重建元数据（需要 JPEG）", "重建：按所选尺寸重构像素"};
+    String[] labels = {"极速：JPEG 整理；其他格式按原尺寸重建", "重建：按所选尺寸重构像素"};
     new AlertDialog.Builder(this)
         .setTitle("处理模式")
         .setSingleChoiceItems(
@@ -588,6 +591,8 @@ public final class MainActivity extends Activity {
 
   private String basis(JSONObject target) {
     String basis = target.optString("basis");
+    if ("original_dimensions".equals(basis))
+      return "每张照片保持正常显示时的宽高，不缩放、不裁切、不加边。";
     if ((long) target.optInt("width") * target.optInt("height") > MemoryBudget.MAX_OUTPUT_PIXELS)
       return "设备规格尺寸；超过本版 52MP 上限，暂不提供处理。";
     if (basis.contains("official")) return "官方 JPEG 尺寸。能否处理仍取决于手机可用内存。";
@@ -1404,15 +1409,14 @@ public final class MainActivity extends Activity {
 
   private void about() {
     new AlertDialog.Builder(this)
-        .setTitle("Camera Profile Studio 2.1")
+        .setTitle("Camera Profile Studio 2.2")
         .setMessage(
             "Android 10+ · 离线运行\n\n"
-                + "极速模式：JPEG 元数据重建，保留压缩图像数据与原 ICC。\n"
-                + "重建模式：支持系统可解码 JPEG、PNG、WebP、HEIC；输出 JPEG / sRGB SDR，透明区域填白。HEIC 导出尚未实现。\n\n"
+                + "极速模式：JPEG 元数据重建，保留压缩图像数据与原 ICC；其他格式自动按原尺寸重建。\n"
+                + "重建模式：读取系统可解码图片的像素，输出 JPEG / sRGB SDR，透明区域填白。GIF 保存第一帧。可选保持原图尺寸。HEIC 导出尚未实现。\n\n"
                 + "可选 ESRGAN 离线 AI，使用手机 CPU；本版未启用 GPU/NPU。AI 输入上限 400 万像素；普通输入和输出上限 5200"
                 + " 万像素，仍受可用内存限制。\n\n"
-                + "设备数据用于模拟与兼容性测试。不能证明照片真实来自所选设备，也不能保证通过真实性鉴定。普通来源元数据会清理，像素中的水印或隐藏标记不保证消除。识别到 APP11"
-                + " / C2PA 等特征时停止处理，检测不构成完整凭证鉴定。\n\n"
+                + "设备数据用于模拟与兼容性测试。不能证明照片真实来自所选设备，也不能保证通过真实性鉴定。旧来源元数据与凭证不复制到新文件，输入含凭证仍可处理。像素中的水印或隐藏标记不保证消除。\n\n"
                 + "使用前景通知持续处理；系统结束 App 后可恢复未完成任务。强制停止不会自动重启。导出目录：Pictures/CameraProfile。\n\n"
                 + "开源组件：Google LiteRT 1.4.2（Apache 2.0）；ESRGAN TensorFlow 示例模型与 Adrish Dey"
                 + " 的实现（MIT）。")

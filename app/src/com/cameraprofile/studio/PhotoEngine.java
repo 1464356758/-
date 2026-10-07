@@ -58,13 +58,11 @@ public final class PhotoEngine {
       }
       String inputSha = JpegEngine.hash(source);
       boolean jpeg = Io.jpeg(source);
-      if (jpeg) JpegFiles.preflight(source, cancel);
-      else Io.guardOtherFormat(source);
+      if (jpeg && "metadata".equals(settings.mode)) JpegFiles.preflight(source, cancel);
       BitmapFactory.Options bounds = new BitmapFactory.Options();
       bounds.inJustDecodeBounds = true;
       BitmapFactory.decodeFile(source.getAbsolutePath(), bounds);
       if (bounds.outWidth < 1 || bounds.outHeight < 1) throw new IOException("手机无法解码该图片格式");
-      if ("image/gif".equals(bounds.outMimeType)) throw new IOException("动画 GIF 暂不支持，请先保存为静态照片");
       int orientation = 1;
       try {
         orientation =
@@ -90,20 +88,24 @@ public final class PhotoEngine {
       String[] stamp = settings.time();
       metadata.date = stamp[0];
       metadata.zone = stamp[1];
-      boolean rebuilt = "rebuild".equals(settings.mode), aiApplied = false;
+      boolean rebuilt = "rebuild".equals(settings.mode) || !jpeg, aiApplied = false;
+      boolean keepSize = settings.originalSize || "metadata".equals(settings.mode);
       String fit = "保持原像素尺寸", algorithm = "JPEG 元数据重建；压缩图像数据保持一致";
       File codingSource = source;
       JSONObject target = null;
       if (!rebuilt) {
-        if (!jpeg) throw new IOException("极速模式需要 JPEG；请切换到像素重建");
         metadata.colorSpace = 65535; // ICC retained; do not assert sRGB conversion.
       } else {
-        target = profiles.resolution(settings);
         int sw = orientation >= 5 ? bounds.outHeight : bounds.outWidth;
         int sh = orientation >= 5 ? bounds.outWidth : bounds.outHeight;
+        target = keepSize
+            ? new JSONObject().put("width", sw).put("height", sh)
+                .put("basis", "original_dimensions").put("label", "保持原图尺寸")
+            : profiles.resolution(settings);
         ResolutionPlan plan =
-            new ResolutionPlan(sw, sh, target.getInt("width"), target.getInt("height"));
-        boolean useAi = settings.ai && settings.strength > 0 && plan.contentWidth > sw;
+            keepSize ? ResolutionPlan.original(sw, sh)
+                : new ResolutionPlan(sw, sh, target.getInt("width"), target.getInt("height"));
+        boolean useAi = settings.ai && settings.strength > 0 && (keepSize || plan.contentWidth > sw);
         if (useAi && (long) sw * sh > 4000000L)
           throw new IOException("本版 AI 支持不超过 400 万像素的输入；可关闭 AI 使用普通重建");
         Runtime runtime = Runtime.getRuntime();
@@ -202,7 +204,8 @@ public final class PhotoEngine {
         metadata.height = plan.height;
         metadata.colorSpace = 1;
         codingSource = encoded;
-        fit = plan.padded() ? "等比缩放并加白边；无裁切、无拉伸" : "等比例重建到目标尺寸";
+        fit = keepSize ? "保持原图尺寸；不缩放、不裁切、不加边"
+            : plan.padded() ? "等比缩放并加白边；无裁切、无拉伸" : "等比例重建到目标尺寸";
       }
       if (cancel.requested()) throw new InterruptedIOException("处理已取消");
       progress.update("重建元数据", 90);
@@ -228,8 +231,10 @@ public final class PhotoEngine {
           .put("width", metadata.width)
           .put("height", metadata.height)
           .put("device", metadata.model);
-      report.put("lens", lens.getString("name")).put("app_version", "2.1").put("format", "JPEG");
-      report.put("algorithm", algorithm).put("mode", settings.mode).put("fit", fit);
+      report.put("lens", lens.getString("name")).put("app_version", "2.2").put("format", "JPEG");
+      report.put("algorithm", algorithm).put("mode", rebuilt ? "rebuild" : "metadata").put("fit", fit);
+      report.put("requested_mode", settings.mode).put("original_size", keepSize);
+      if ("image/gif".equals(bounds.outMimeType)) report.put("frame", "FIRST");
       report
           .put("quality", rebuilt ? settings.quality : JSONObject.NULL)
           .put("color", rebuilt ? "sRGB SDR" : "保留原 ICC");

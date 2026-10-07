@@ -55,13 +55,6 @@ public final class JpegFiles {
         if (++segments > 10000) throw new IOException("JPEG 段数量异常");
         boolean app = marker >= 224 && marker <= 239;
         String header = app ? new String(data, StandardCharsets.ISO_8859_1) : "";
-        String lower = header.toLowerCase(Locale.ROOT);
-        if (app
-            && (marker == 235
-                || lower.contains("c2pa")
-                || lower.contains("contentcredentials")
-                || lower.contains("content credentials")))
-          throw new IOException("检测到真实性凭证，本版保护文件并停止处理");
         boolean keep =
             !app && marker != 254
                 || marker == 226 && header.startsWith("ICC_PROFILE\0")

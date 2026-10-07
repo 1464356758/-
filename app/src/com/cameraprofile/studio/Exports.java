@@ -63,7 +63,7 @@ public final class Exports {
     byte[] manifest =
         new JSONObject()
             .put("schema_version", 2)
-            .put("app_version", "2.1")
+            .put("app_version", "2.2")
             .put("capture_provenance", "SIMULATION")
             .put("files", reports)
             .toString(2)

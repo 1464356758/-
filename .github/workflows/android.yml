@@ -85,6 +85,13 @@ jobs:
           bash app/build.sh
           bash tests/android/build.sh
           python3 scripts/prepare_native_target.py
+      - name: Preserve aligned build for local release signing
+        if: matrix.api == 34
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: CameraProfileStudio-2.2-aligned-build
+          path: delivery-build/
+          retention-days: 30
       - name: Core, photo picker and screen-off native AI checks
         run: python3 -u scripts/run_native.py
       - name: Persist results even on failure

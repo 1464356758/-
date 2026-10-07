@@ -21,4 +21,4 @@ rm -f build/final-signed.apk
 "$bt/apksigner" verify --verbose build/final-signed.apk
 "$bt/zipalign" -c -P 16 4 build/final-signed.apk
 "$bt/aapt" dump badging build/final-signed.apk > build/package-info.txt
-mv -f build/final-signed.apk CameraProfileStudio-2.1.apk
+mv -f build/final-signed.apk CameraProfileStudio-2.2.apk

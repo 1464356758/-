@@ -98,7 +98,7 @@ with (qa / 'emulator.log').open('w') as log:
    command(['shell','settings','put','global',key,'0'])
   command(['shell','input','keyevent','224'])
   command(['shell','input','keyevent','82'])
-  for name, extra, limit in [('SmokeRunner',[],480),('PickerRunner',[],300),('BackgroundRunner',['-e','tileSide','10'],1200)]:
+  for name, extra, limit in [('SmokeRunner',[],480),('PixelInputRunner',[],480),('PickerRunner',[],300),('BackgroundRunner',['-e','tileSide','10'],1200)]:
    command(['shell','am','force-stop','com.cameraprofile.studio'])
    command(['shell','input','keyevent','224'])
    command(['shell','input','keyevent','82'])
@@ -110,7 +110,7 @@ with (qa / 'emulator.log').open('w') as log:
    (qa/'native-summary.json').write_text(json.dumps(summary,indent=2))
    if not passed:raise AssertionError('Native checks failed: '+name)
   command(['pull','/sdcard/Android/data/com.cameraprofile.studio/files/',str(qa/'device-output')],90,False)
-  summary['apk_sha256']=manifest['delivered_apk_sha256']
+  summary['tested_apk_sha256']=manifest['tested_apk_sha256']
   summary['test_signature_only']=manifest['test_signature_only']
   summary['application_payload_unchanged']=manifest['application_payload_unchanged']
   summary['all_passed']=True

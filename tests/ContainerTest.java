@@ -10,7 +10,7 @@ public class ContainerTest {
 
   public static void main(String[] args) throws Exception {
     for (String name :
-        new String[] {"input.jpg", "progressive.jpg", "progressive-late-metadata.jpg"}) {
+        new String[] {"input.jpg", "progressive.jpg", "progressive-late-metadata.jpg", "late-credential.jpg"}) {
       File in = new File("tests/" + name), out = new File("tests/stream-" + name);
       JpegEngine.Metadata m = new JpegEngine.Metadata();
       m.make = "TEST";
@@ -37,8 +37,9 @@ public class ContainerTest {
           Math.abs(((Number) tags.get("ExposureBiasValue")).doubleValue() + 0.3) < 1e-12,
           "signed rational");
       check(tags.get("OffsetTimeOriginal").equals("+08:00"), "offset");
+      check(!JpegEngine.credentials(Files.readAllBytes(out.toPath())), "old credentials omitted");
     }
-    for (String name : new String[] {"late-credential.jpg", "truncated.jpg"}) {
+    for (String name : new String[] {"truncated.jpg"}) {
       try {
         JpegFiles.preflight(new File("tests/" + name), () -> false);
         throw new AssertionError("accepted " + name);

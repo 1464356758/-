@@ -4,6 +4,10 @@ package com.cameraprofile.studio;
 public final class ResolutionPlan {
   public final int width, height, contentWidth, contentHeight, left, top;
 
+  public static ResolutionPlan original(int width, int height) {
+    return new ResolutionPlan(width, height, Math.max(width, height), Math.min(width, height));
+  }
+
   public ResolutionPlan(int sw, int sh, int landscapeWidth, int landscapeHeight) {
     if (sw < 1 || sh < 1 || landscapeWidth < 1 || landscapeHeight < 1)
       throw new IllegalArgumentException("invalid dimensions");

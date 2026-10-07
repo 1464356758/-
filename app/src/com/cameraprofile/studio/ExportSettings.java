@@ -8,7 +8,7 @@ import org.json.*;
 public final class ExportSettings {
   public String profileId = "iphone18promax", mode = "rebuild", timeMode = "current";
   public int lens = 0, resolution = 0, quality = 98, strength = 25;
-  public boolean detail = true, ai = false;
+  public boolean detail = true, ai = false, originalSize = false;
   public String customDate = "", customZone = "+08:00";
   public Integer iso, whiteBalance;
   public Double exposure, bias;
@@ -18,6 +18,7 @@ public final class ExportSettings {
     out.put("profile_id", profileId).put("lens", lens).put("resolution", resolution);
     out.put("mode", mode).put("time_mode", timeMode).put("quality", quality);
     out.put("detail", detail).put("ai", ai).put("strength", strength);
+    out.put("original_size", originalSize);
     out.put("custom_date", customDate).put("custom_zone", customZone);
     if (iso != null) out.put("iso", iso);
     if (whiteBalance != null) out.put("white_balance", whiteBalance);
@@ -36,6 +37,7 @@ public final class ExportSettings {
     out.quality = json.optInt("quality", 98);
     out.detail = json.optBoolean("detail", true);
     out.ai = json.optBoolean("ai");
+    out.originalSize = json.optBoolean("original_size", false);
     out.strength = json.optInt("strength", 25);
     out.customDate = json.optString("custom_date", "");
     out.customZone = json.optString("custom_zone", "+08:00");

@@ -37,3 +37,7 @@ credential = segment(235,b'c2pa')
 (root / 'tests/late-credential.jpg').write_bytes(data[:boundary]+credential+data[boundary:])
 (root / 'tests/truncated.jpg').write_bytes(data[:-20])
 print('Synthetic progressive, inter-scan metadata, credential and truncation fixtures created.')
+
+frames = [Image.new('RGB',(65,49),(180,45,30)),Image.new('RGB',(65,49),(30,90,190))]
+frames[0].save(root/'tests/android/assets/first22.gif',save_all=True,append_images=frames[1:],duration=100,loop=0)
+print('Synthetic two-frame GIF fixture created.')

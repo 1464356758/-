@@ -1,8 +1,10 @@
-# Camera Profile Studio 2.1
+# Camera Profile Studio 2.2 开发中
 
 可直接安装的 Android 照片设备参数模拟、隐私整理与离线像素重建 App。
 
-**下载安装：[CameraProfileStudio-2.1.apk](https://github.com/1464356758/-/raw/refs/heads/main/dist/CameraProfileStudio-2.1.apk)**
+本轮正在取消凭证块拦截并增加“保持原图尺寸”。新版待实际构建和原生验证；下方是上一版 2.1。
+
+**上一版下载安装：[CameraProfileStudio-2.1.apk](https://github.com/1464356758/-/raw/refs/heads/main/dist/CameraProfileStudio-2.1.apk)**
 
 Android 10 及以上；与本项目 2.0 保持同一签名，可以覆盖安装。原照片始终只读，生成新副本。
 

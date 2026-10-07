@@ -50,6 +50,15 @@ public final class ProfileRepository {
   }
 
   public JSONObject resolution(ExportSettings settings) {
+    if (settings.originalSize) {
+      try {
+        return new JSONObject()
+            .put("label", "保持原图尺寸")
+            .put("basis", "original_dimensions");
+      } catch (JSONException impossible) {
+        throw new IllegalStateException(impossible);
+      }
+    }
     JSONObject target =
         get(settings.profileId).optJSONArray("output_modes").optJSONObject(settings.resolution);
     if (target == null) throw new IllegalArgumentException("所选输出尺寸不存在");
@@ -73,7 +82,8 @@ public final class ProfileRepository {
     lens(settings);
     if (!"rebuild".equals(settings.mode) && !"metadata".equals(settings.mode))
       throw new IllegalArgumentException("处理模式无效");
-    if ("rebuild".equals(settings.mode) && !supports(settings, settings.resolution))
+    if ("rebuild".equals(settings.mode) && !settings.originalSize
+        && !supports(settings, settings.resolution))
       throw new IllegalArgumentException("该镜头不支持所选尺寸，或尺寸超过本版上限");
     if (settings.quality < 90
         || settings.quality > 100

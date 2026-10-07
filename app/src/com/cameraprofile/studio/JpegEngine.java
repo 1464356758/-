@@ -8,7 +8,7 @@ import java.util.*;
 
 /** Strict JPEG rebuild, including ordinary metadata between progressive scans. */
 public final class JpegEngine {
-  public static final String SOFTWARE = "Camera Profile Studio 2.1";
+  public static final String SOFTWARE = "Camera Profile Studio 2.2";
   public static final String DESCRIPTION = "Device profile simulation; not proof of capture";
 
   public static int normalizeOrientation(int value) {
@@ -102,7 +102,6 @@ public final class JpegEngine {
   }
 
   public static byte[] rebuild(byte[] jpeg, byte[] exif) throws IOException {
-    if (credentials(jpeg)) throw new IOException("检测到真实性凭证，本版保护文件并停止处理");
     if (exif.length > 65533) throw new IOException("EXIF 超出 JPEG 段容量");
     ByteArrayOutputStream out = new ByteArrayOutputStream(jpeg.length + exif.length);
     out.write(255);

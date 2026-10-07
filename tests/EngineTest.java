@@ -23,16 +23,16 @@ public class EngineTest {
     System.arraycopy(app, 0, cred, 2, 8);
     System.arraycopy(in, 2, cred, 10, in.length - 2);
     if (!JpegEngine.credentials(cred)) throw new AssertionError();
-    try {
-      JpegEngine.rebuild(cred, new byte[0]);
-      throw new AssertionError();
-    } catch (java.io.IOException expected) {
-    }
+    byte[] rebuilt = JpegEngine.rebuild(cred, JpegEngine.exif(
+        "TEST", "TEST", 1, 120, 80, null, null, null, null));
+    if (JpegEngine.credentials(rebuilt)
+        || !Arrays.equals(JpegEngine.imagePayload(in), JpegEngine.imagePayload(rebuilt)))
+      throw new AssertionError("credential marker must not block or be copied");
     try {
       JpegEngine.segments(new byte[] {1, 2, 3});
       throw new AssertionError();
     } catch (java.io.IOException expected) {
     }
-    System.out.println("PASS: payload identity, credentials rejection, invalid input rejection");
+    System.out.println("PASS: payload identity, credential input accepted and omitted, invalid input rejection");
   }
 }

@@ -4,7 +4,7 @@ rows=json.load(open('tests/expected.json'))
 for i,row in enumerate(rows):
  im=Image.open(f'tests/profile-{i}.jpg');e=im.getexif();x=e.get_ifd(34665)
  assert e[271]==row['manufacturer'] and e[272]==row['model']
- assert e[274]==1 and e[305]=='Camera Profile Studio 2.1'
+ assert e[274]==1 and e[305]=='Camera Profile Studio 2.2'
  assert 'simulation' in e[270]
  assert x[40962]==120 and x[40963]==80 and x[40961]==1
  assert 34853 not in e and 37500 not in x and 34855 not in x and 33434 not in x

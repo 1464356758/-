@@ -1,3 +1,7 @@
+# 2.2 本轮验证状态
+
+源码修改已完成，构建和 Android 14/15 原生验证待执行。下文为 2.1 已完成记录，不代表 2.2 通过。
+
 # Camera Profile Studio 2.1 测试记录
 
 日期：2026-10-07。包名 `com.cameraprofile.studio`，版本 2.1 / 8，Android 10 及以上，目标 API 35。
