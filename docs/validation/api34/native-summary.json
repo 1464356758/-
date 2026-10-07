@@ -1,0 +1,35 @@
+{
+  "environment": {
+    "android_api": 34,
+    "architecture": "x86_64",
+    "acceleration": "KVM",
+    "boot_seconds": 26.23
+  },
+  "tests": [
+    {
+      "runner": "SmokeRunner",
+      "passed": true,
+      "seconds": 10.91,
+      "adb_exit_code": 0,
+      "log": "SmokeRunner.log"
+    },
+    {
+      "runner": "PickerRunner",
+      "passed": true,
+      "seconds": 5.45,
+      "adb_exit_code": 0,
+      "log": "PickerRunner.log"
+    },
+    {
+      "runner": "BackgroundRunner",
+      "passed": true,
+      "seconds": 49.0,
+      "adb_exit_code": 0,
+      "log": "BackgroundRunner.log"
+    }
+  ],
+  "apk_sha256": "4f670b5c98227855f131d122a960f4f3b5ed187c86bdf7e669947cca9423b576",
+  "test_signature_only": true,
+  "application_payload_unchanged": true,
+  "all_passed": true
+}

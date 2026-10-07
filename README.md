@@ -16,6 +16,8 @@ Android 10 及以上；与本项目 2.0 保持同一签名，可以覆盖安装�
 
 ## 当前进度和测试
 
+**本轮验证已通过：Android 14、15 各 58/58 项原生检查；八组基础回归和 25 张独立回读通过。** [查看实际完成的验证任务](https://github.com/1464356758/-/actions/runs/37569990571)。原始证据保存在 [docs/validation](docs/validation)。
+
 [PROJECT_STATUS.json](PROJECT_STATUS.json) 是正式进度记录。[TEST_REPORT.md](TEST_REPORT.md) 区分已完成验证与待完成项目。
 
 [Android 自动构建与原生测试](https://github.com/1464356758/-/actions/workflows/android.yml) 会核验模型依赖、编译源码、跑基础回归，再安装实际交付的签名 APK，执行核心原生检查、导入双入口检查和实际 AI 熄屏处理、取消及中断恢复检查。失败日志也保留；只有全部测试实际通过才标为通过。

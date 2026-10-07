@@ -1,0 +1,16 @@
+{
+  "delivered_apk_sha256": "4f670b5c98227855f131d122a960f4f3b5ed187c86bdf7e669947cca9423b576",
+  "delivered_certificate_sha256": "08c71daeaf00941e14148b5252db897d99d4fe9c14a8fee16172016fceefca6d",
+  "test_signature_only": true,
+  "application_payload_unchanged": true,
+  "files": [
+    {
+      "path": "qa/native-target.apk",
+      "sha256": "d947f8b91d25d8d272e84e8a6ef7db7d89c277edfe720054484f82566a2fb5b2"
+    },
+    {
+      "path": "tests/android/RuntimeTests.apk",
+      "sha256": "66f31cab2cf0452eb5e0b3cee3ef6e124539659cfc238b7fb9059a1ec61df3b8"
+    }
+  ]
+}

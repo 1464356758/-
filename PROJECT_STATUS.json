@@ -3,8 +3,8 @@
   "repository": "https://github.com/1464356758/-",
   "app_version": "2.1",
   "version_code": 8,
-  "phase": "CI_BACKGROUND_FINAL_RETEST",
-  "updated_at": "2026-10-07T10:59:51.260253+08:00",
+  "phase": "READY_TO_INSTALL",
+  "updated_at": "2026-10-07T12:13:05+08:00",
   "delivered_apk": "dist/CameraProfileStudio-2.1.apk",
   "delivered_apk_sha256": "4f670b5c98227855f131d122a960f4f3b5ed187c86bdf7e669947cca9423b576",
   "completed": [
@@ -17,26 +17,31 @@
     "Installable 2.1 APK, pinned build workflow and timeout-bounded native runner added to repository",
     "Fresh Android 14 and 15 core native checks: 31/31 on each platform",
     "Fresh Android 14 and 15 album/folder native checks: 9/9 on each platform",
-    "Both platforms completed 100 native ESRGAN tiles with screen off and verified exact 4000x3000 gallery output"
+    "Both platforms completed 100 native ESRGAN tiles with screen off and verified exact 4000x3000 gallery output",
+    "Final strict pure regression: all eight groups and 25 independent Pillow readbacks passed",
+    "Android 14 and 15 each completed 58/58 native assertions, including real screen-off AI, notification cancellation, journal recovery and current wake-lock release",
+    "GitHub installable APK downloaded back with exact original SHA-256",
+    "Independent desktop decoding verified both platform background outputs at 4000x3000 with matching SHA-256"
   ],
-  "pending": [
-    "Corrected current wake-lock assertion plus notification cancellation and journal recovery suite on both Android platforms"
-  ],
-  "next_action": "Run corrected BackgroundRunner; check every assertion and preserve the complete results",
+  "pending": [],
+  "next_action": "Install signed CameraProfileStudio-2.1.apk over 2.0; confirm album choice and background operation on user phone",
   "limits": [
     "No user phone or ARM real-device test yet",
     "OEM battery policies and Android foreground-service time limits still apply",
-    "No zero-bug or real-camera-original authenticity claim"
+    "No zero-bug or real-camera-original authenticity claim",
+    "Recovery integration test reloads a cold task journal and restarts the service; not a complete OS-kill or OEM battery-policy simulation"
   ],
   "diagnosed_blockers": [
     "Local environment has no KVM; repeated software-emulator startups are unsuitable for the pending integration checks",
     "Prior repository commit contained no APK dist directory and no Actions workflow; README download and workflow links were premature"
   ],
   "ci_run": {
-    "id": 37567244947,
-    "url": "https://github.com/1464356758/-/actions/runs/37567244947",
-    "source_commit": "4dfee00518c3c4cb4eac7d8286e3670f8cf91024",
-    "status": "completed_with_harness_failure"
+    "id": 37569990571,
+    "url": "https://github.com/1464356758/-/actions/runs/37569990571",
+    "source_commit": "3ab7450dfd0b07abf275947e5e2bdcc047e97d55",
+    "status": "completed",
+    "conclusion": "success"
   },
-  "test_harness_fix": "Search current Wake Locks section only. First-run dumpsys had historical REL CameraProfile:processing, with no current held lock; matching all text gave a false failure."
+  "test_harness_fix": "Search current Wake Locks section only. First-run dumpsys had historical REL CameraProfile:processing, with no current held lock; matching all text gave a false failure.",
+  "evidence_path": "docs/validation/results.json"
 }

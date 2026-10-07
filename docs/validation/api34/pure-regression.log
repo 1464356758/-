@@ -1,0 +1,9 @@
+PASS: payload identity, credentials rejection, invalid input rejection
+PASS: all eight EXIF orientations mapped correctly
+PASS: identity, flat fields, tiny image, linear light, antialias, parallel determinism, cancellation, bounded detail, exact targets and aspect fit
+PASS: all six profiles / 25 lens configurations encoded
+PASS: 1152x1536 -> 3024x4032, JPEG + EXIF + ZIP byte identity; desktop elapsed 1322ms
+PASS: streaming baseline/progressive rebuild, late metadata, exact exposure, signed values, credentials, truncation, cancellation and memory gates
+PASS: arbitrary neural target sizes, tiny images, tile partition, bounded strength, zero strength and cancellation
+PASS: structured PNG/WebP/HEIF credential guards and compressed-pixel false positives
+PASS: independent Pillow readback of 25 outputs, dimensions, lenses, sRGB, privacy and simulation fields

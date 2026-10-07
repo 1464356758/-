@@ -1,0 +1,39 @@
+INSTRUMENTATION_STATUS: phase=native harness started
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: phase=requesting fixture URI grants
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: phase=fixture URI grants ready
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: phase=launching main activity
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: phase=main activity started
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: phase=PASS album uses native Photo Picker on Android 14
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: phase=PASS album supports multiple photos within platform limit
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: phase=PASS folder uses multi-select document picker
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: phase=PASS import dialog exposes album and folder choices
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: phase=PASS album dialog action dispatches Photo Picker intent
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: phase=PASS cancelling album preserves selected photo
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: phase=PASS folder dialog action dispatches OPEN_DOCUMENT
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: phase=PASS album multiple selection deduplicates URIs
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: phase=PASS real native Photo Picker opens successfully
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_RESULT: report=PASS album uses native Photo Picker on Android 14
+PASS album supports multiple photos within platform limit
+PASS folder uses multi-select document picker
+PASS import dialog exposes album and folder choices
+PASS album dialog action dispatches Photo Picker intent
+PASS cancelling album preserves selected photo
+PASS folder dialog action dispatches OPEN_DOCUMENT
+PASS album multiple selection deduplicates URIs
+PASS real native Photo Picker opens successfully
+
+INSTRUMENTATION_CODE: -1

@@ -1,0 +1,17 @@
+Verifies
+Verified using v1 scheme (JAR signing): false
+Verified using v2 scheme (APK Signature Scheme v2): false
+Verified using v3 scheme (APK Signature Scheme v3): true
+Verified using v3.1 scheme (APK Signature Scheme v3.1): false
+Verified using v4 scheme (APK Signature Scheme v4): false
+Verified for SourceStamp: false
+Number of signers: 1
+Signer #1 certificate DN: CN=Camera Profile Studio
+Signer #1 certificate SHA-256 digest: 08c71daeaf00941e14148b5252db897d99d4fe9c14a8fee16172016fceefca6d
+Signer #1 certificate SHA-1 digest: bdf0f31e0101648b89c818b1e0cff2a00fcc2a6b
+Signer #1 certificate MD5 digest: c53fb27248ee2411b8b415fae26df2d8
+Signer #1 key algorithm: RSA
+Signer #1 key size (bits): 2048
+Signer #1 public key SHA-256 digest: 9bb44799b6e1ec324b879c6fc735472a3c0cf2293220524c0c8b494191cd82c9
+Signer #1 public key SHA-1 digest: c86eca0fbfdfe34aceb9bde6caea0dc7e4b8ffdd
+Signer #1 public key MD5 digest: 2d3feaa09dabaf7286b239102641f1f6

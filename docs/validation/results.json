@@ -1,0 +1,44 @@
+{
+  "run_id": 37569990571,
+  "all_passed": true,
+  "platforms": [
+    {
+      "api": 34,
+      "checks": {
+        "SmokeRunner": 31,
+        "PickerRunner": 9,
+        "BackgroundRunner": 18
+      },
+      "total_native_checks": 58,
+      "passed": true,
+      "background_output": {
+        "name": "background-ai-12mp.jpg",
+        "dimensions": [
+          4000,
+          3000
+        ],
+        "sha256": "2b642b9440a9dc5ba7491851936211480d9dca24f08dda0f12cb2ebadc6ab7bc",
+        "decoded": true
+      }
+    },
+    {
+      "api": 35,
+      "checks": {
+        "SmokeRunner": 31,
+        "PickerRunner": 9,
+        "BackgroundRunner": 18
+      },
+      "total_native_checks": 58,
+      "passed": true,
+      "background_output": {
+        "name": "background-ai-12mp.jpg",
+        "dimensions": [
+          4000,
+          3000
+        ],
+        "sha256": "2b642b9440a9dc5ba7491851936211480d9dca24f08dda0f12cb2ebadc6ab7bc",
+        "decoded": true
+      }
+    }
+  ]
+}
